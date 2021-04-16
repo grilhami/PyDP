@@ -1,6 +1,6 @@
 import os
 import pytest
-from pydp.algorithms.laplacian import BoundedMean
+from pydp.algorithms.laplacian import BoundedMean # type: ignore
 from pydp._pydp import Summary
 
 
