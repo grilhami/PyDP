@@ -1,9 +1,9 @@
 import pytest
 from pydp.distributions import (
-    LaplaceDistribution,
-    GaussianDistribution,
-    GeometricDistribution,
-) # type: ignore
+    LaplaceDistribution, # type: ignore
+    GaussianDistribution, # type: ignore
+    GeometricDistribution, # type: ignore
+) 
 import pydp as dp
 import math
 from typing import List

@@ -1,7 +1,7 @@
 import os
 import pytest
 from pydp.algorithms.laplacian import BoundedMean # type: ignore
-from pydp._pydp import Summary
+from pydp._pydp import Summary # type: ignore
 
 
 expect_near = lambda expected, actual, tol: (
