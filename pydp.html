@@ -1,0 +1,1293 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>PyDP &mdash; PyDP 1.0.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction to PyDP" href="readme.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyDP
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction To Differential Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#machine-learning-and-data">Machine Learning and Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#why-is-differential-privacy-so-important">Why is Differential Privacy so important ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#how-is-differential-privacy-implemented">How is Differential Privacy implemented ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#formal-definition-of-differential-privacy">Formal Definition Of Differential Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#differential-privacy-in-real-world">Differential - Privacy In Real World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Introduction to PyDP</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PyDP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#algorithms">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#distributions">Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pydp.util">Util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ml">ML</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyDP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>PyDP</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/pydp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pydp">
+<h1>PyDP<a class="headerlink" href="#pydp" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="algorithms">
+<h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pydp.algorithms.laplacian.</span></span><span class="sig-name descname"><span class="pre">BoundedMean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l0_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linf_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean" title="Permalink to this definition">¶</a></dt>
+<dd><p>BoundedMean computes the average of values in a dataset, in a differentially private manner.</p>
+<p>Incrementally provides a differentially private average.
+All input vales are normalized to be their difference from the middle of the
+input range. That allows us to calculate the sum of all input values with
+half the sensitivity it would otherwise take for better accuracy (as compared
+to doing noisy sum / noisy count). This algorithm is taken from section 2.5.5
+of the following book (algorithm 2.4):
+<a class="reference external" href="https://books.google.com/books?id=WFttDQAAQBAJ&amp;pg=PA24#v=onepage&amp;q&amp;f=false">https://books.google.com/books?id=WFttDQAAQBAJ&amp;pg=PA24#v=onepage&amp;q&amp;f=false</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.add_entries">
+<span class="sig-name descname"><span class="pre">add_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.add_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds multiple inputs to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current list passed is not added.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.add_entry">
+<span class="sig-name descname"><span class="pre">add_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.add_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds one input to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current data passed is not added.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.epsilon">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">epsilon</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.epsilon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the epsilon set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.l0_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">l0_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.l0_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the l0_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.linf_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">linf_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.linf_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the linf_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.memory_used">
+<span class="sig-name descname"><span class="pre">memory_used</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.memory_used" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the memory currently used by the algorithm in bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges serialized summary data into this algorithm. The summary proto must represent data from the same algorithm type with identical parameters. The  data field must contain the algorithm summary type of the corresponding algorithm used. The summary proto cannot be empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.noise_confidence_interval">
+<span class="sig-name descname"><span class="pre">noise_confidence_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.noise_confidence_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the confidence_level confidence interval of noise added within the algorithm with specified privacy budget, using epsilon and other relevant, algorithm-specific parameters (e.g. bounds) provided by the constructor.</p>
+<p>This metric may be used to gauge the error rate introduced by the noise.</p>
+<p>If the returned value is &lt;x,y&gt;, then the noise added has a confidence_level chance of being in the domain [x,y].</p>
+<p>By default, NoiseConfidenceInterval() returns an error. Algorithms for which a confidence interval can feasibly be calculated override this and output the relevant value.</p>
+<p>Conservatively, we do not release the error rate for algorithms whose confidence intervals rely on input size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.privacy_budget_left">
+<span class="sig-name descname"><span class="pre">privacy_budget_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.privacy_budget_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the remaining privacy budget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.quick_result">
+<span class="sig-name descname"><span class="pre">quick_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.quick_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the algorithm on the input using the epsilon parameter provided in the constructor and returns output.</p>
+<p>Consumes 100% of the privacy budget.</p>
+<p>Note: It resets the privacy budget first.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the algorithm to a state in which it has received no input. After Reset is called, the algorithm should only consider input added after the last Reset call when providing output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_interval_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the algorithm result.</p>
+<p>The default call consumes the remaining privacy budget.</p>
+<p>When <cite>privacy_budget</cite> (defined on [0,1]) is set, it consumes only the <cite>privacy_budget</cite> amount of budget.</p>
+<p><cite>noise_interval_level</cite> provides the confidence level of the noise confidence interval, which may be included in the algorithm output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedMean.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedMean.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes summary data of current entries into Summary proto. This allows results from distributed aggregation to be recorded and later merged.</p>
+<p>Returns empty summary for algorithms for which serialize is unimplemented.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pydp.algorithms.laplacian.</span></span><span class="sig-name descname"><span class="pre">BoundedSum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l0_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linf_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum" title="Permalink to this definition">¶</a></dt>
+<dd><p>BoundedSum computes the sum of values in a dataset, in a differentially private manner.</p>
+<p>Incrementally provides a differentially private sum, clamped between upper
+and lower values. Bounds can be manually set or privately inferred.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.add_entries">
+<span class="sig-name descname"><span class="pre">add_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.add_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds multiple inputs to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current list passed is not added.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.add_entry">
+<span class="sig-name descname"><span class="pre">add_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.add_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds one input to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current data passed is not added.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.epsilon">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">epsilon</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.epsilon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the epsilon set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.l0_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">l0_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.l0_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the l0_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.linf_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">linf_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.linf_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the linf_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.memory_used">
+<span class="sig-name descname"><span class="pre">memory_used</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.memory_used" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the memory currently used by the algorithm in bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges serialized summary data into this algorithm. The summary proto must represent data from the same algorithm type with identical parameters. The  data field must contain the algorithm summary type of the corresponding algorithm used. The summary proto cannot be empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.noise_confidence_interval">
+<span class="sig-name descname"><span class="pre">noise_confidence_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.noise_confidence_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the confidence_level confidence interval of noise added within the algorithm with specified privacy budget, using epsilon and other relevant, algorithm-specific parameters (e.g. bounds) provided by the constructor.</p>
+<p>This metric may be used to gauge the error rate introduced by the noise.</p>
+<p>If the returned value is &lt;x,y&gt;, then the noise added has a confidence_level chance of being in the domain [x,y].</p>
+<p>By default, NoiseConfidenceInterval() returns an error. Algorithms for which a confidence interval can feasibly be calculated override this and output the relevant value.</p>
+<p>Conservatively, we do not release the error rate for algorithms whose confidence intervals rely on input size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.privacy_budget_left">
+<span class="sig-name descname"><span class="pre">privacy_budget_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.privacy_budget_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the remaining privacy budget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.quick_result">
+<span class="sig-name descname"><span class="pre">quick_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.quick_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the algorithm on the input using the epsilon parameter provided in the constructor and returns output.</p>
+<p>Consumes 100% of the privacy budget.</p>
+<p>Note: It resets the privacy budget first.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the algorithm to a state in which it has received no input. After Reset is called, the algorithm should only consider input added after the last Reset call when providing output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_interval_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the algorithm result.</p>
+<p>The default call consumes the remaining privacy budget.</p>
+<p>When <cite>privacy_budget</cite> (defined on [0,1]) is set, it consumes only the <cite>privacy_budget</cite> amount of budget.</p>
+<p><cite>noise_interval_level</cite> provides the confidence level of the noise confidence interval, which may be included in the algorithm output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedSum.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedSum.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes summary data of current entries into Summary proto. This allows results from distributed aggregation to be recorded and later merged.</p>
+<p>Returns empty summary for algorithms for which serialize is unimplemented.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pydp.algorithms.laplacian.</span></span><span class="sig-name descname"><span class="pre">BoundedStandardDeviation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l0_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linf_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation" title="Permalink to this definition">¶</a></dt>
+<dd><p>BoundedStandardDeviation computes the standard deviation of values in a dataset, in a differentially private manner.</p>
+<p>Incrementally provides a differentially private standard deviation for values
+in the range [lower..upper]. Values outside of this range will be clamped so
+they lie in the range. The output will also be clamped between 0 and (upper -
+lower).</p>
+<p>The implementation simply computes the bounded variance and takes the square
+root, which is differentially private by the post-processing theorem. It
+relies on the fact that the bounded variance algorithm guarantees that the
+output is non-negative.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.add_entries">
+<span class="sig-name descname"><span class="pre">add_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.add_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds multiple inputs to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current list passed is not added.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.add_entry">
+<span class="sig-name descname"><span class="pre">add_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.add_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds one input to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current data passed is not added.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.epsilon">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">epsilon</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.epsilon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the epsilon set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.l0_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">l0_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.l0_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the l0_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.linf_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">linf_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.linf_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the linf_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.memory_used">
+<span class="sig-name descname"><span class="pre">memory_used</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.memory_used" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the memory currently used by the algorithm in bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges serialized summary data into this algorithm. The summary proto must represent data from the same algorithm type with identical parameters. The  data field must contain the algorithm summary type of the corresponding algorithm used. The summary proto cannot be empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.noise_confidence_interval">
+<span class="sig-name descname"><span class="pre">noise_confidence_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.noise_confidence_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the confidence_level confidence interval of noise added within the algorithm with specified privacy budget, using epsilon and other relevant, algorithm-specific parameters (e.g. bounds) provided by the constructor.</p>
+<p>This metric may be used to gauge the error rate introduced by the noise.</p>
+<p>If the returned value is &lt;x,y&gt;, then the noise added has a confidence_level chance of being in the domain [x,y].</p>
+<p>By default, NoiseConfidenceInterval() returns an error. Algorithms for which a confidence interval can feasibly be calculated override this and output the relevant value.</p>
+<p>Conservatively, we do not release the error rate for algorithms whose confidence intervals rely on input size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.privacy_budget_left">
+<span class="sig-name descname"><span class="pre">privacy_budget_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.privacy_budget_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the remaining privacy budget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.quick_result">
+<span class="sig-name descname"><span class="pre">quick_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.quick_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the algorithm on the input using the epsilon parameter provided in the constructor and returns output.</p>
+<p>Consumes 100% of the privacy budget.</p>
+<p>Note: It resets the privacy budget first.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the algorithm to a state in which it has received no input. After Reset is called, the algorithm should only consider input added after the last Reset call when providing output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_interval_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the algorithm result.</p>
+<p>The default call consumes the remaining privacy budget.</p>
+<p>When <cite>privacy_budget</cite> (defined on [0,1]) is set, it consumes only the <cite>privacy_budget</cite> amount of budget.</p>
+<p><cite>noise_interval_level</cite> provides the confidence level of the noise confidence interval, which may be included in the algorithm output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedStandardDeviation.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedStandardDeviation.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes summary data of current entries into Summary proto. This allows results from distributed aggregation to be recorded and later merged.</p>
+<p>Returns empty summary for algorithms for which serialize is unimplemented.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pydp.algorithms.laplacian.</span></span><span class="sig-name descname"><span class="pre">BoundedVariance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l0_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linf_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance" title="Permalink to this definition">¶</a></dt>
+<dd><p>BoundedVariance computes the variance of values in a dataset, in a differentially private manner.</p>
+<p>Incrementally provides a differentially private variance for values in the
+range [lower..upper]. Values outside of this range will be clamped so they
+lie in the range. The output will also be clamped between 0 and (upper -
+lower)^2. Since the result is guaranteed to be positive, this algorithm can
+be used to compute a differentially private standard deviation.</p>
+<p>The algorithm uses O(1) memory and runs in O(n) time where n is the size of
+the dataset, making it a fast and efficient. The amount of noise added grows
+quadratically in (upper - lower) and decreases linearly in n, so it might not
+produce good results unless n &gt;&gt; (upper - lower)^2.</p>
+<p>The algorithm is a variation of the algorithm for differentially private mean
+from “Differential Privacy: From Theory to Practice”, section 2.5.5:
+<a class="reference external" href="https://books.google.com/books?id=WFttDQAAQBAJ&amp;pg=PA24#v=onepage&amp;q&amp;f=false">https://books.google.com/books?id=WFttDQAAQBAJ&amp;pg=PA24#v=onepage&amp;q&amp;f=false</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.add_entries">
+<span class="sig-name descname"><span class="pre">add_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.add_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds multiple inputs to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current list passed is not added.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.add_entry">
+<span class="sig-name descname"><span class="pre">add_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.add_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds one input to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current data passed is not added.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.epsilon">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">epsilon</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.epsilon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the epsilon set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.l0_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">l0_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.l0_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the l0_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.linf_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">linf_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.linf_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the linf_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.memory_used">
+<span class="sig-name descname"><span class="pre">memory_used</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.memory_used" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the memory currently used by the algorithm in bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges serialized summary data into this algorithm. The summary proto must represent data from the same algorithm type with identical parameters. The  data field must contain the algorithm summary type of the corresponding algorithm used. The summary proto cannot be empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.noise_confidence_interval">
+<span class="sig-name descname"><span class="pre">noise_confidence_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.noise_confidence_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the confidence_level confidence interval of noise added within the algorithm with specified privacy budget, using epsilon and other relevant, algorithm-specific parameters (e.g. bounds) provided by the constructor.</p>
+<p>This metric may be used to gauge the error rate introduced by the noise.</p>
+<p>If the returned value is &lt;x,y&gt;, then the noise added has a confidence_level chance of being in the domain [x,y].</p>
+<p>By default, NoiseConfidenceInterval() returns an error. Algorithms for which a confidence interval can feasibly be calculated override this and output the relevant value.</p>
+<p>Conservatively, we do not release the error rate for algorithms whose confidence intervals rely on input size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.privacy_budget_left">
+<span class="sig-name descname"><span class="pre">privacy_budget_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.privacy_budget_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the remaining privacy budget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.quick_result">
+<span class="sig-name descname"><span class="pre">quick_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.quick_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the algorithm on the input using the epsilon parameter provided in the constructor and returns output.</p>
+<p>Consumes 100% of the privacy budget.</p>
+<p>Note: It resets the privacy budget first.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the algorithm to a state in which it has received no input. After Reset is called, the algorithm should only consider input added after the last Reset call when providing output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_interval_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the algorithm result.</p>
+<p>The default call consumes the remaining privacy budget.</p>
+<p>When <cite>privacy_budget</cite> (defined on [0,1]) is set, it consumes only the <cite>privacy_budget</cite> amount of budget.</p>
+<p><cite>noise_interval_level</cite> provides the confidence level of the noise confidence interval, which may be included in the algorithm output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.BoundedVariance.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.BoundedVariance.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes summary data of current entries into Summary proto. This allows results from distributed aggregation to be recorded and later merged.</p>
+<p>Returns empty summary for algorithms for which serialize is unimplemented.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pydp.algorithms.laplacian.</span></span><span class="sig-name descname"><span class="pre">Max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l0_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linf_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Max computes the Max value in the dataset, in a differentially private manner.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.add_entries">
+<span class="sig-name descname"><span class="pre">add_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Max.add_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds multiple inputs to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current list passed is not added.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.add_entry">
+<span class="sig-name descname"><span class="pre">add_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Max.add_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds one input to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current data passed is not added.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.epsilon">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">epsilon</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Max.epsilon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the epsilon set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.l0_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">l0_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Max.l0_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the l0_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.linf_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">linf_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Max.linf_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the linf_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.memory_used">
+<span class="sig-name descname"><span class="pre">memory_used</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Max.memory_used" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the memory currently used by the algorithm in bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Max.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges serialized summary data into this algorithm. The summary proto must represent data from the same algorithm type with identical parameters. The  data field must contain the algorithm summary type of the corresponding algorithm used. The summary proto cannot be empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.noise_confidence_interval">
+<span class="sig-name descname"><span class="pre">noise_confidence_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Max.noise_confidence_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the confidence_level confidence interval of noise added within the algorithm with specified privacy budget, using epsilon and other relevant, algorithm-specific parameters (e.g. bounds) provided by the constructor.</p>
+<p>This metric may be used to gauge the error rate introduced by the noise.</p>
+<p>If the returned value is &lt;x,y&gt;, then the noise added has a confidence_level chance of being in the domain [x,y].</p>
+<p>By default, NoiseConfidenceInterval() returns an error. Algorithms for which a confidence interval can feasibly be calculated override this and output the relevant value.</p>
+<p>Conservatively, we do not release the error rate for algorithms whose confidence intervals rely on input size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.privacy_budget_left">
+<span class="sig-name descname"><span class="pre">privacy_budget_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Max.privacy_budget_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the remaining privacy budget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.quick_result">
+<span class="sig-name descname"><span class="pre">quick_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.Max.quick_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the algorithm on the input using the epsilon parameter provided in the constructor and returns output.</p>
+<p>Consumes 100% of the privacy budget.</p>
+<p>Note: It resets the privacy budget first.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Max.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the algorithm to a state in which it has received no input. After Reset is called, the algorithm should only consider input added after the last Reset call when providing output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_interval_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.Max.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the algorithm result.</p>
+<p>The default call consumes the remaining privacy budget.</p>
+<p>When <cite>privacy_budget</cite> (defined on [0,1]) is set, it consumes only the <cite>privacy_budget</cite> amount of budget.</p>
+<p><cite>noise_interval_level</cite> provides the confidence level of the noise confidence interval, which may be included in the algorithm output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Max.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Max.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes summary data of current entries into Summary proto. This allows results from distributed aggregation to be recorded and later merged.</p>
+<p>Returns empty summary for algorithms for which serialize is unimplemented.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pydp.algorithms.laplacian.</span></span><span class="sig-name descname"><span class="pre">Min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l0_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linf_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Min" title="Permalink to this definition">¶</a></dt>
+<dd><p>Min computes the minium value in the dataset, in a differentially private manner.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.add_entries">
+<span class="sig-name descname"><span class="pre">add_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Min.add_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds multiple inputs to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current list passed is not added.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.add_entry">
+<span class="sig-name descname"><span class="pre">add_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Min.add_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds one input to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current data passed is not added.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.epsilon">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">epsilon</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Min.epsilon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the epsilon set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.l0_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">l0_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Min.l0_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the l0_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.linf_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">linf_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Min.linf_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the linf_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.memory_used">
+<span class="sig-name descname"><span class="pre">memory_used</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Min.memory_used" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the memory currently used by the algorithm in bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Min.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges serialized summary data into this algorithm. The summary proto must represent data from the same algorithm type with identical parameters. The  data field must contain the algorithm summary type of the corresponding algorithm used. The summary proto cannot be empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.noise_confidence_interval">
+<span class="sig-name descname"><span class="pre">noise_confidence_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Min.noise_confidence_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the confidence_level confidence interval of noise added within the algorithm with specified privacy budget, using epsilon and other relevant, algorithm-specific parameters (e.g. bounds) provided by the constructor.</p>
+<p>This metric may be used to gauge the error rate introduced by the noise.</p>
+<p>If the returned value is &lt;x,y&gt;, then the noise added has a confidence_level chance of being in the domain [x,y].</p>
+<p>By default, NoiseConfidenceInterval() returns an error. Algorithms for which a confidence interval can feasibly be calculated override this and output the relevant value.</p>
+<p>Conservatively, we do not release the error rate for algorithms whose confidence intervals rely on input size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.privacy_budget_left">
+<span class="sig-name descname"><span class="pre">privacy_budget_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Min.privacy_budget_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the remaining privacy budget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.quick_result">
+<span class="sig-name descname"><span class="pre">quick_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.Min.quick_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the algorithm on the input using the epsilon parameter provided in the constructor and returns output.</p>
+<p>Consumes 100% of the privacy budget.</p>
+<p>Note: It resets the privacy budget first.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Min.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the algorithm to a state in which it has received no input. After Reset is called, the algorithm should only consider input added after the last Reset call when providing output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_interval_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.Min.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the algorithm result.</p>
+<p>The default call consumes the remaining privacy budget.</p>
+<p>When <cite>privacy_budget</cite> (defined on [0,1]) is set, it consumes only the <cite>privacy_budget</cite> amount of budget.</p>
+<p><cite>noise_interval_level</cite> provides the confidence level of the noise confidence interval, which may be included in the algorithm output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Min.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Min.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes summary data of current entries into Summary proto. This allows results from distributed aggregation to be recorded and later merged.</p>
+<p>Returns empty summary for algorithms for which serialize is unimplemented.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pydp.algorithms.laplacian.</span></span><span class="sig-name descname"><span class="pre">Median</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l0_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linf_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Median" title="Permalink to this definition">¶</a></dt>
+<dd><p>Median computes the Median value in the dataset, in a differentially private manner.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.add_entries">
+<span class="sig-name descname"><span class="pre">add_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Median.add_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds multiple inputs to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current list passed is not added.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.add_entry">
+<span class="sig-name descname"><span class="pre">add_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Median.add_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds one input to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current data passed is not added.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.epsilon">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">epsilon</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Median.epsilon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the epsilon set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.l0_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">l0_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Median.l0_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the l0_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.linf_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">linf_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Median.linf_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the linf_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.memory_used">
+<span class="sig-name descname"><span class="pre">memory_used</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Median.memory_used" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the memory currently used by the algorithm in bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Median.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges serialized summary data into this algorithm. The summary proto must represent data from the same algorithm type with identical parameters. The  data field must contain the algorithm summary type of the corresponding algorithm used. The summary proto cannot be empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.noise_confidence_interval">
+<span class="sig-name descname"><span class="pre">noise_confidence_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Median.noise_confidence_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the confidence_level confidence interval of noise added within the algorithm with specified privacy budget, using epsilon and other relevant, algorithm-specific parameters (e.g. bounds) provided by the constructor.</p>
+<p>This metric may be used to gauge the error rate introduced by the noise.</p>
+<p>If the returned value is &lt;x,y&gt;, then the noise added has a confidence_level chance of being in the domain [x,y].</p>
+<p>By default, NoiseConfidenceInterval() returns an error. Algorithms for which a confidence interval can feasibly be calculated override this and output the relevant value.</p>
+<p>Conservatively, we do not release the error rate for algorithms whose confidence intervals rely on input size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.privacy_budget_left">
+<span class="sig-name descname"><span class="pre">privacy_budget_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Median.privacy_budget_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the remaining privacy budget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.quick_result">
+<span class="sig-name descname"><span class="pre">quick_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.Median.quick_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the algorithm on the input using the epsilon parameter provided in the constructor and returns output.</p>
+<p>Consumes 100% of the privacy budget.</p>
+<p>Note: It resets the privacy budget first.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Median.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the algorithm to a state in which it has received no input. After Reset is called, the algorithm should only consider input added after the last Reset call when providing output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_interval_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.Median.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the algorithm result.</p>
+<p>The default call consumes the remaining privacy budget.</p>
+<p>When <cite>privacy_budget</cite> (defined on [0,1]) is set, it consumes only the <cite>privacy_budget</cite> amount of budget.</p>
+<p><cite>noise_interval_level</cite> provides the confidence level of the noise confidence interval, which may be included in the algorithm output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Median.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Median.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes summary data of current entries into Summary proto. This allows results from distributed aggregation to be recorded and later merged.</p>
+<p>Returns empty summary for algorithms for which serialize is unimplemented.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pydp.algorithms.laplacian.</span></span><span class="sig-name descname"><span class="pre">Count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l0_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linf_sensitivity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Count computes the Count of number of items in the dataset, in a differentially private manner.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.add_entries">
+<span class="sig-name descname"><span class="pre">add_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Count.add_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds multiple inputs to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current list passed is not added.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.add_entry">
+<span class="sig-name descname"><span class="pre">add_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Count.add_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds one input to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current data passed is not added.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.epsilon">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">epsilon</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Count.epsilon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the epsilon set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.l0_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">l0_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Count.l0_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the l0_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.linf_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">linf_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Count.linf_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the linf_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.memory_used">
+<span class="sig-name descname"><span class="pre">memory_used</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Count.memory_used" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the memory currently used by the algorithm in bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Count.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges serialized summary data into this algorithm. The summary proto must represent data from the same algorithm type with identical parameters. The  data field must contain the algorithm summary type of the corresponding algorithm used. The summary proto cannot be empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.noise_confidence_interval">
+<span class="sig-name descname"><span class="pre">noise_confidence_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Count.noise_confidence_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the confidence_level confidence interval of noise added within the algorithm with specified privacy budget, using epsilon and other relevant, algorithm-specific parameters (e.g. bounds) provided by the constructor.</p>
+<p>This metric may be used to gauge the error rate introduced by the noise.</p>
+<p>If the returned value is &lt;x,y&gt;, then the noise added has a confidence_level chance of being in the domain [x,y].</p>
+<p>By default, NoiseConfidenceInterval() returns an error. Algorithms for which a confidence interval can feasibly be calculated override this and output the relevant value.</p>
+<p>Conservatively, we do not release the error rate for algorithms whose confidence intervals rely on input size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.privacy_budget_left">
+<span class="sig-name descname"><span class="pre">privacy_budget_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Count.privacy_budget_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the remaining privacy budget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.quick_result">
+<span class="sig-name descname"><span class="pre">quick_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.Count.quick_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the algorithm on the input using the epsilon parameter provided in the constructor and returns output.</p>
+<p>Consumes 100% of the privacy budget.</p>
+<p>Note: It resets the privacy budget first.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Count.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the algorithm to a state in which it has received no input. After Reset is called, the algorithm should only consider input added after the last Reset call when providing output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_interval_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.Count.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the algorithm result.</p>
+<p>The default call consumes the remaining privacy budget.</p>
+<p>When <cite>privacy_budget</cite> (defined on [0,1]) is set, it consumes only the <cite>privacy_budget</cite> amount of budget.</p>
+<p><cite>noise_interval_level</cite> provides the confidence level of the noise confidence interval, which may be included in the algorithm output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Count.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Count.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes summary data of current entries into Summary proto. This allows results from distributed aggregation to be recorded and later merged.</p>
+<p>Returns empty summary for algorithms for which serialize is unimplemented.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pydp.algorithms.laplacian.</span></span><span class="sig-name descname"><span class="pre">Percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perencetile finds the value in the dataset with that percentile, in a differentially private manner.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.add_entries">
+<span class="sig-name descname"><span class="pre">add_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.add_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds multiple inputs to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current list passed is not added.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.add_entry">
+<span class="sig-name descname"><span class="pre">add_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.add_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds one input to the algorithm.</p>
+<p>Note: If the data exceeds the overflow limit of storage, the current data passed is not added.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.epsilon">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">epsilon</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.epsilon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the epsilon set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.l0_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">l0_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.l0_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the l0_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.linf_sensitivity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">linf_sensitivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.linf_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the linf_sensitivity set at initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.memory_used">
+<span class="sig-name descname"><span class="pre">memory_used</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.memory_used" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the memory currently used by the algorithm in bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges serialized summary data into this algorithm. The summary proto must represent data from the same algorithm type with identical parameters. The  data field must contain the algorithm summary type of the corresponding algorithm used. The summary proto cannot be empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.noise_confidence_interval">
+<span class="sig-name descname"><span class="pre">noise_confidence_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.noise_confidence_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the confidence_level confidence interval of noise added within the algorithm with specified privacy budget, using epsilon and other relevant, algorithm-specific parameters (e.g. bounds) provided by the constructor.</p>
+<p>This metric may be used to gauge the error rate introduced by the noise.</p>
+<p>If the returned value is &lt;x,y&gt;, then the noise added has a confidence_level chance of being in the domain [x,y].</p>
+<p>By default, NoiseConfidenceInterval() returns an error. Algorithms for which a confidence interval can feasibly be calculated override this and output the relevant value.</p>
+<p>Conservatively, we do not release the error rate for algorithms whose confidence intervals rely on input size.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.percentile">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">percentile</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.percentile" title="Permalink to this definition">¶</a></dt>
+<dd><p>percentile Gets the value that was set in the constructor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.privacy_budget_left">
+<span class="sig-name descname"><span class="pre">privacy_budget_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.privacy_budget_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the remaining privacy budget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.quick_result">
+<span class="sig-name descname"><span class="pre">quick_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.quick_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the algorithm on the input using the epsilon parameter provided in the constructor and returns output.</p>
+<p>Consumes 100% of the privacy budget.</p>
+<p>Note: It resets the privacy budget first.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the algorithm to a state in which it has received no input. After Reset is called, the algorithm should only consider input added after the last Reset call when providing output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privacy_budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_interval_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the algorithm result.</p>
+<p>The default call consumes the remaining privacy budget.</p>
+<p>When <cite>privacy_budget</cite> (defined on [0,1]) is set, it consumes only the <cite>privacy_budget</cite> amount of budget.</p>
+<p><cite>noise_interval_level</cite> provides the confidence level of the noise confidence interval, which may be included in the algorithm output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.algorithms.laplacian.Percentile.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pydp.algorithms.laplacian.Percentile.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes summary data of current entries into Summary proto. This allows results from distributed aggregation to be recorded and later merged.</p>
+<p>Returns empty summary for algorithms for which serialize is unimplemented.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="distributions">
+<h2>Distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pydp.distributions.GaussianDistribution">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pydp.distributions.</span></span><span class="sig-name descname"><span class="pre">GaussianDistribution</span></span><a class="headerlink" href="#pydp.distributions.GaussianDistribution" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="pydp.distributions.GaussianDistribution.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pydp.distributions.GaussianDistribution" title="pydp.GaussianDistribution"><span class="pre">pydp.GaussianDistribution</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.distributions.GaussianDistribution.sample" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Samples the Gaussian with distribution Gauss(scale*stddev).</dt><dd><dl class="simple">
+<dt>scale</dt><dd><p>A factor to scale stddev.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pydp.distributions.GaussianDistribution.stddev">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">stddev</span></span><a class="headerlink" href="#pydp.distributions.GaussianDistribution.stddev" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns stddev</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pydp.distributions.LaplaceDistribution">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pydp.distributions.</span></span><span class="sig-name descname"><span class="pre">LaplaceDistribution</span></span><a class="headerlink" href="#pydp.distributions.LaplaceDistribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws samples from the Laplacian distribution.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.distributions.LaplaceDistribution.get_diversity">
+<span class="sig-name descname"><span class="pre">get_diversity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pydp.distributions.LaplaceDistribution" title="pydp.LaplaceDistribution"><span class="pre">pydp.LaplaceDistribution</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.distributions.LaplaceDistribution.get_diversity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the parameter defining this distribution, often labeled b.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.distributions.LaplaceDistribution.get_uniform_double">
+<span class="sig-name descname"><span class="pre">get_uniform_double</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pydp.distributions.LaplaceDistribution" title="pydp.LaplaceDistribution"><span class="pre">pydp.LaplaceDistribution</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.distributions.LaplaceDistribution.get_uniform_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a uniform random integer of in range [0, 2^53).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pydp.distributions.LaplaceDistribution.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pydp.distributions.LaplaceDistribution" title="pydp.LaplaceDistribution"><span class="pre">pydp.LaplaceDistribution</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.distributions.LaplaceDistribution.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Samples the Laplacian distribution Laplace(u, scale*b).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>scale</strong> – A factor to scale b.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pydp.util">
+<span id="util"></span><h2>Util<a class="headerlink" href="#module-pydp.util" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.Geometric">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">Geometric</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><a class="headerlink" href="#pydp.util.Geometric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.UniformDouble">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">UniformDouble</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.util.UniformDouble" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.correlation">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.util.correlation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns linear correlation coefficient.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.get_next_power_of_two">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">get_next_power_of_two</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.util.get_next_power_of_two" title="Permalink to this definition">¶</a></dt>
+<dd><p>Outputs value of a power of two that is greater than and closest to the given numerical input.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.mean">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydp.util.mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>mean(arg0: List[float]) -&gt; float</p></li>
+</ol>
+<p>Calculation of the mean of given set of numbers for a double int data type.</p>
+<ol class="arabic simple" start="2">
+<li><p>mean(arg0: List[int]) -&gt; float</p></li>
+</ol>
+<p>Calculation of the mean of given set of numbers for an int data type.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.order_statistics">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">order_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.util.order_statistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample values placed in ascending order.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.qnorm">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">qnorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">pydp._pydp.StatusOrD</span><a class="headerlink" href="#pydp.util.qnorm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quantile function of normal distribution, inverse of the cumulative distribution function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.round_to_nearest_multiple">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">round_to_nearest_multiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.util.round_to_nearest_multiple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns closest multiple of n that is greater than the given number.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.safe_add">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">safe_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><a class="headerlink" href="#pydp.util.safe_add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Addition performed with safety to cater to overflow conditions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.safe_square">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">safe_square</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><a class="headerlink" href="#pydp.util.safe_square" title="Permalink to this definition">¶</a></dt>
+<dd><p>A number squared, with safety to cater to overflow conditions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.safe_subtract">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">safe_subtract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><a class="headerlink" href="#pydp.util.safe_subtract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subtraction performed with safety to cater to overflow conditions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.standard_deviation">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">standard_deviation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.util.standard_deviation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard Deviation, the square root of variance.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.variance">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">variance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#pydp.util.variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate variance for a set of values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.vector_filter">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">vector_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pydp.util.vector_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filtering a vector using a logical operatio with only values selected using true output in their positions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.vector_to_string">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">vector_to_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><a class="headerlink" href="#pydp.util.vector_to_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conversion of a vector to a string data type.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pydp.util.xor_strings">
+<span class="sig-prename descclassname"><span class="pre">pydp.util.</span></span><span class="sig-name descname"><span class="pre">xor_strings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><a class="headerlink" href="#pydp.util.xor_strings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Character-wise XOR of two strings. In case of differing string lengths, operation will be performed by the repeated concatenation of the smaler string till it is of the same length as the longer before the performance of the XOR operation.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="ml">
+<h2>ML<a class="headerlink" href="#ml" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="readme.html" class="btn btn-neutral float-left" title="Introduction to PyDP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, OpenMined.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
